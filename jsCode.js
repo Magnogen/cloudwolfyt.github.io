@@ -43,12 +43,18 @@ function get_zip1() {
   }
   pbar.value += 15;
 
-  zip.generateAsync({type:"blob"})
-  .then(function(content) {
-    // see FileSaver.js
-    saveAs(content, "cw_bsc_name-space.zip");
-    document.getElementById("pbarDiv").style = "visibility:hidden";
-  });
+  // zip.generateAsync({type:"blob"})
+  // .then(function(content) {
+  //   // see FileSaver.js
+  //   saveAs(content, "cw_bsc_name-space.zip");
+  //   document.getElementById("pbarDiv").style = "visibility:hidden";
+  // });
+
+    zip.generateAsync({type:"blob"}).then(function (blob) { // 1) generate the zip file
+        saveAs(blob, "cw_bsc_name-space.zip");                          // 2) trigger the download
+    }, function (err) {
+        jQuery("#blob").text(err);
+    });
 }
 
 function get_jsons(block_list) { //transforms the blocks.json into a full length object
