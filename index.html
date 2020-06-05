@@ -6,8 +6,40 @@
     <script src="jsCode.js" defer></script>
     <script src="lib/jszip-master/dist/jszip.js" defer></script>
     <script src="lib/FileSaver.js-master/dist/FileSaver.js" defer></script>
-    
-    <title>Document</title>
+    <style>
+        body { /* GLOBAL STYLES */
+            font-family: "Lato", sans-serif; /* font for page */
+            height: 100%; /* fill whole screen*/
+            line-height: 1.6; /* gaps in between lines */
+        }
+        .container { /* PADDING STYLES */
+            margin-left: auto;  /* makes gap appear on left when window resized */
+            margin-right: auto; /* ^ but on right side */
+            max-width: 980px; /* specifies where to make gap */
+            padding: 12px 64px; /* adds smallest gap to ease eyes */
+            padding-top: 64px; /* sets padding for top of page */
+            padding-bottom: 64px; /* ^ but for bottom of page */
+        }
+        .button { /* BUTTON STYLES (normal) */
+            display: inline-block; /* Standard for formatiing buttons */
+            border-radius: 4px; /* specifies how round the corners are */
+            background-color: #000000; /* background color */
+            border: solid; /* specifies type of border to show */
+            border-color: #ffffff; /* specifies color of border */
+            color: #FFFFFF; /* text color */
+            text-align: center; /* aligns text to center of button */
+            padding: 16px 32px; /* specifies spacing around text */
+            transition: all 0.5s; /* fade animation duration */
+            cursor: pointer; /* makes cursor into 'hand' sprite */
+            margin: 8px; /* specifies spacing around button */
+        }
+        .button:hover { /* BUTTON STYLES (when hovered over) */
+            border-color: #000000; /* specifies color of border */
+            background-color: #ffffff; /* Hover Color */
+            color: #000000 /* Hover Text Color */
+        }
+    </style>
+    <title>Block Serializer Generator (Beta)</title>
 </head>
 <body>
 
