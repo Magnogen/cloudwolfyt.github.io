@@ -1,38 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="jsCode.js" defer></script>
-    <script src="lib/jszip-master/dist/jszip.js" defer></script>
-    <script src="lib/FileSaver.js-master/dist/FileSaver.js" defer></script>
-    
-    <title>Document</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jsCode.js" defer></script>
+        <script src="lib/jszip-master/dist/jszip.js" defer></script>
+        <script src="lib/FileSaver.js-master/dist/FileSaver.js" defer></script>
+        <base href="https://cloudwolfyt.github.io">
+        <style>
+    	    body { /* GLOBAL STYLES */
+        	    font-family: "Lato", sans-serif; /* font for page */
+                height: 100%; /* fill whole screen*/
+                line-height: 1.6; /* gaps in between lines */
+            }
+            .container { /* PADDING STYLES */
+                margin-left: auto;  /* makes gap appear on left when window resized */
+                margin-right: auto; /* ^ but on right side */
+                max-width: 980px; /* specifies where to make gap */
+                padding: 12px 64px; /* adds smallest gap to ease eyes */
+                padding-top: 64px; /* sets padding for top of page */
+                padding-bottom: 64px; /* ^ but for bottom of page */
+            }
+            .button { /* BUTTON STYLES (normal) */
+                display: inline-block; /* Standard for formatiing buttons */
+                border-radius: 4px; /* specifies how round the corners are */
+                background-color: #000000; /* background color */
+                border: solid; /* specifies type of border to show */
+                border-color: #ffffff; /* specifies color of border */
+                color: #FFFFFF; /* text color */
+                text-align: center; /* aligns text to center of button */
+                padding: 16px 32px; /* specifies spacing around text */
+                transition: all 0.5s; /* fade animation duration */
+                cursor: pointer; /* makes cursor into 'hand' sprite */
+                margin: 8px; /* specifies spacing around button */
+            }
+            .button:hover { /* BUTTON STYLES (when hovered over) */
+                border-color: #000000; /* specifies color of border */
+                background-color: #ffffff; /* Hover Color */
+                color: #000000 /* Hover Text Color */
+            }
+        </style>
 
-<section>
-    <h1>Export Types</h1>
-    <input type='checkbox' name='opSetblock'>
-    <label for='opSetblock'>
-        setblock ~ ~ ~ [block]
-      </label><br>
-    <input type='checkbox' name='opFallBlock'>
-      <label for='opFallBlock'>
-        summon falling_block ~ ~ ~ {Time:1,{block}}
-    </label><br>
-    <input type='checkbox' name='opMirrored'>
-    <label for='opMirrored'>
-      setblock ~ ~ ~ [mirrored block]
-    </label><br>
-    <input type='checkbox' name='setblockCustom'><input type="text" name= "setblockPre"><span>[block]</span><input type="text" name= "setblockPost"><br>
-    <input type='checkbox' name='summonCustom'><input type="text" name= "summonPre"><span>{block}</span><input type="text" name= "summonPost"><br>
-    <input type='button' name='getZip' onclick="get_zip()" value = "Download Pack">
-    <br>
-    <div id="pbarDiv" style="visibility:hidden">
-      <label for="progress_bar">Downloading:</label>
-      <progress id="progress_bar" value="0" max="100"> 0% </progress>
-    </div>
-</section>
-</body>
+        <title>Block Serializer Generator (Beta)</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                Export Types
+            </h1>
+            <input type='checkbox' name='opSetblock'>
+            <label for='opSetblock'>
+                setblock ~ ~ ~ [block]
+            </label>
+            <br>
+            <input type='checkbox' name='opFallBlock'>
+            <label for='opFallBlock'>
+                summon falling_block ~ ~ ~ {Time:1,{block}}
+            </label>
+            <br>
+            <input type='checkbox' name='opMirroed'>
+                <label for='opMirrored'>
+                    setblock ~ ~ ~ [mirrored block]
+            </label><br>
+            <input type='checkbox' name='setblockCustom'>
+            <input type="text" name= "setblockPre">
+            <span>
+                [block]
+            </span>
+            <input type="text" name= "setblockPost"><br>
+            <input type='checkbox' name='summonCustom'>
+            <input type="text" name= "summonPre">
+            <span>
+                {block}
+            </span>
+            <input type="text" name= "summonPost"><br>
+            <input class="button" type='button' name='getZip' onclick="get_zip()" value = "Download Pack">
+            <br>
+            <div id="pbarDiv" style="visibility:hidden">
+                <label for="progress_bar">Downloading:</label>
+                <progress id="progress_bar" value="0" max="100"> 0% </progress>
+            </div>
+        </div>
+    </body>
 </html>
