@@ -13,21 +13,26 @@
 
 <section>
     <h1>Export Types</h1>
-    <input type='checkbox' id='opSetblock'>
+    <input type='checkbox' name='opSetblock'>
     <label for='opSetblock'>
         setblock ~ ~ ~ [block]
       </label><br>
-    <input type='checkbox' id='opFallBlock'>
+    <input type='checkbox' name='opFallBlock'>
       <label for='opFallBlock'>
         summon falling_block ~ ~ ~ {Time:1,{block}}
     </label><br>
-    <input type='checkbox' id='opMirrored'>
+    <input type='checkbox' name='opMirrored'>
     <label for='opMirrored'>
       setblock ~ ~ ~ [mirrored block]
     </label><br>
-    <input type='checkbox' id='setblockCustom'><input type="text" id= "setblockPre"><span>[block]</span><input type="text" id= "setblockPost"><br>
-    <input type='checkbox' id='summonCustom'><input type="text" id= "summonPre"><span>{block}</span><input type="text" id= "summonPost"><br>
-    <input type='button' id='getZip' onclick="get_zip()" value = "Download Pack">
+    <input type='checkbox' name='setblockCustom'><input type="text" name= "setblockPre"><span>[block]</span><input type="text" name= "setblockPost"><br>
+    <input type='checkbox' name='summonCustom'><input type="text" name= "summonPre"><span>{block}</span><input type="text" name= "summonPost"><br>
+    <input type='button' name='getZip' onclick="get_zip()" value = "Download Pack">
+    <br>
+    <div id="pbarDiv" style="visibility:hidden">
+      <label for="progress_bar">Downloading:</label>
+      <progress id="progress_bar" value="0" max="100"> 0% </progress>
+    </div>
 </section>
 </body>
 </html>

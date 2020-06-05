@@ -1,42 +1,53 @@
 var all_blocks = [];
 var blocks = [];
 var tree = 2;
+var pbar = document.getElementById("progress_bar");
+
 function get_zip() {
-  document.getElementById('getZip').checked = false;
-  get_jsons("./blocks.json")
+  pbar.value = 0;
+  document.getElementById("pbarDiv").style = "visibility:shown";
+  document.getElementsByName('getZip').checked = false;
+  get_jsons("./blocks.json");
 }
 function get_zip1() {
+  pbar.value += 30;
   var zip = new JSZip();
   zip.folder("bsc/tags/blocks");
   zip.folder("bsc/functions/read");
   block_tags(zip,tree);
   get_read(zip,tree);
-
-  if(document.getElementById('opSetblock').checked) {
+  pbar.value += 10;
+  if(document.getElementsByName('opSetblock')[0].checked) {
     zip.folder("bsc/functions/setblock");
     get_setblock(zip,tree,"setblock","setblock ~ ~ ~ ","");
   }
-  if(document.getElementById('opMirrored').checked) {
+  pbar.value += 10;
+  if(document.getElementsByName('opMirrored')[0].checked) {
     zip.folder("bsc/functions/mirrored");
     get_setblock_mirrored(zip,tree,"mirrored","setblock ~ ~ ~ ","");
   }
-  if(document.getElementById('opFallBlock').checked) {
+  pbar.value += 10;
+  if(document.getElementsByName('opFallBlock')[0].checked) {
     zip.folder("bsc/functions/falling_block");
     get_nbt(zip,tree,'falling_block',"summon falling_block ~ ~ ~ {Time:1,","}");
   }
-  if(document.getElementById('setblockCustom').checked) {
+  pbar.value += 10;
+  if(document.getElementsByName('setblockCustom')[0].checked) {
     zip.folder("bsc/functions/custom_set");
-    get_setblock(zip,tree,'custom_set',document.getElementById('setblockPre').value,document.getElementById('setblockPost').value);
+    get_setblock(zip,tree,'custom_set',document.getElementsByName('setblockPre')[0].value,document.getElementsByName('setblockPost')[0].value);
   }
-  if(document.getElementById('summonCustom').checked) {
+  pbar.value += 15;
+  if(document.getElementsByName('summonCustom').checked) {
     zip.folder("bsc/functions/custom_nbt");
-    get_nbt(zip,tree,'custom_nbt',document.getElementById('summonPre').value,document.getElementById('summonPost').value);
+    get_nbt(zip,tree,'custom_nbt',document.getElementsByName('summonPre')[0].value,document.getElementsByName('summonPost')[0].value);
   }
+  pbar.value += 15;
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
     // see FileSaver.js
-    saveAs(content, "example.zip");
+    saveAs(content, "cw_bsc_name-space.zip");
+    document.getElementById("pbarDiv").style = "visibility:hidden";
   });
 }
 
