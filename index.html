@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jsCode.js" defer></script>
+    <script src="lib/jszip-master/dist/jszip.js" defer></script>
+    <script src="lib/FileSaver.js-master/dist/FileSaver.js" defer></script>
+    
+    <title>Document</title>
+</head>
+<body>
+
+<section>
+    <h1>Export Types</h1>
+    <input type='checkbox' id='opSetblock'>
+    <label for='opSetblock'>
+        setblock ~ ~ ~ [block]
+      </label><br>
+    <input type='checkbox' id='opFallBlock'>
+      <label for='opFallBlock'>
+        summon falling_block ~ ~ ~ {Time:1,{block}}
+    </label><br>
+    <input type='checkbox' id='opMirrored'>
+    <label for='opMirrored'>
+      setblock ~ ~ ~ [mirrored block]
+    </label><br>
+    <input type='checkbox' id='setblockCustom'><input type="text" id= "setblockPre"><span>[block]</span><input type="text" id= "setblockPost"><br>
+    <input type='checkbox' id='summonCustom'><input type="text" id= "summonPre"><span>{block}</span><input type="text" id= "summonPost"><br>
+    <input type='button' id='getZip' onclick="get_zip()" value = "Download Pack">
+</section>
+</body>
+</html>
